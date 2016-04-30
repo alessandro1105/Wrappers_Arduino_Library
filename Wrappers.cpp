@@ -17,56 +17,56 @@
    @url            https://github.com/alessandro1105
 */
 
-#include "Wrapper.h"
+#include <Arduino.h>
+#include "Wrappers.h"
 
 
 //BOOLEAN WRAPPER
-BooleanWrapper::BooleanWrapper(int value) { //construttore/incapsulatore
+BooleanWrapper::BooleanWrapper(uint8_t value) { //construttore/incapsulatore
 
 	if (value > 0) {
-
-		this->value = 1;
-
+		_value = 1;
 	} else {
-
-		this->value = 0;
+		_value = 0;
 	}
 
 }
 
 int BooleanWrapper::getBoolean() { //restituisce il valore memorizzato
 
-	return value;
+	return _value;
 
 }
 
-int BooleanWrapper::type() { //zrestituisco il tipo di wrapper
+uint8_t BooleanWrapper::type() { //zrestituisco il tipo di wrapper
 
-	return Wrapper::BOOLEAN;
+	return BOOLEAN;
 	
 }
 
 //DOUBLE WRAPPER
 DoubleWrapper::DoubleWrapper(double value) { //construttore/incapsulatore
 
-	this->value = value;
+	_value = value;
 
 }
 
 DoubleWrapper::DoubleWrapper(String value) { //construttore/incapsulatore
 
+	//creo un buffer per contenere la stringa
 	char buffer[value.length() +1];
-	
+		
+	//converto la stringa in un array di caratteri
 	value.toCharArray(buffer, sizeof(buffer));
-	
-
-	this->value = atof(buffer);
+		
+	//converto il buffer in float
+	_value = atof(buffer);
 
 }
 
 double DoubleWrapper::getDouble() { //restituisce il valore memorizzato
 
-	return value;
+	return _value;
 
 }
 
@@ -81,9 +81,9 @@ String DoubleWrapper::getString(int decimal) { // restituisce il double converti
 		decimal = 5;
 	}
 	
-	integerPart = floor(value);
+	integerPart = floor(_value);
 	
-	decimalPart = (value - integerPart);
+	decimalPart = (_value - integerPart);
 	
 
 	
@@ -120,76 +120,17 @@ String DoubleWrapper::getString(int decimal) { // restituisce il double converti
 	}
 
 	return String(integerPart) + "." + String((long) decimalPart);
-	
-	/*
-	
-	String string;
-	
-	int decimalPlaces = precision;
-	
-	double input = value;
-	
-	if(decimalPlaces!=0){
-string = String((int)(input*pow(10,decimalPlaces)));
-if(abs(input)<1){
-if(input>0)
-string = "0"+string;
-else if(input<0)
-string = string.substring(0,1)+"0"+string.substring(1);
-}
-return string.substring(0,string.length()-decimalPlaces)+"."+string.substring(string.length()-decimalPlaces);
-}
-else {
-return String((int)input);
-}
-	
-	
-	
-	/*
-	
-	long integerPart;
-	double decimalPart;
-	
-	int moltiplier = 1;
-	
-	integerPart = floor(value);
-	
-	decimalPart = (value - integerPart);// - integerPart * pow(10, precision);
-	
-	//Serial.println(integerPart);
-	//Serial.println(decimalPart);
-	//Serial.println((int) decimalPart);
-	
-	while (((int) decimalPart) - decimalPart < 0) {
-		
-		decimalPart *= 10;
-		moltiplier++;
-		
-		//Serial.println(decimalPart);4
-		//Serial.println(moltiplier);
-		
-		if (moltiplier > precision) 
-			break;
-		
-	}
-	
-	//Serial.println(decimalPart);
-	
-	//Serial.println((long) decimalPart);
 
-	return String(integerPart) + "." + String((long) decimalPart);
-	
-	*/
 }
 
 String DoubleWrapper::getString() { // restituisce il double convertito in stringa
 
-	return getString(5);
+	return getString(5); //ritorno il numero in stringa con 5 decimali
 }
 
-int DoubleWrapper::type() { //zrestituisco il tipo di wrapper
+uint8_t DoubleWrapper::type() { //zrestituisco il tipo di wrapper
 
-	return Wrapper::DOUBLE;
+	return DOUBLE;
 
 }
 
@@ -197,7 +138,7 @@ int DoubleWrapper::type() { //zrestituisco il tipo di wrapper
 //LONG WRAPPER
 LongWrapper::LongWrapper(long value) { //construttore/incapsulatore
 
-	this->value = value;
+	_value = value;
 
 }
 
@@ -208,19 +149,19 @@ LongWrapper::LongWrapper(String value) { //construttore/incapsulatore
 	value.toCharArray(buffer, sizeof(buffer));
 	
 
-	this->value = atol(buffer);
+	_value = atol(buffer);
 
 }
 
 long LongWrapper::getLong() { //restituisce il valore memorizzato
 
-	return value;
+	return _value;
 
 }
 
-int LongWrapper::type() { //zrestituisco il tipo di wrapper
+uint8_t LongWrapper::type() { //zrestituisco il tipo di wrapper
 
-	return Wrapper::LONG;
+	return LONG;
 
 }
 
@@ -228,18 +169,18 @@ int LongWrapper::type() { //zrestituisco il tipo di wrapper
 //STRING WRAPPER
 StringWrapper::StringWrapper(String value) { //construttore/incapsulatore
 
-	this->value = value;
+	_value = value;
 
 }
 
 String StringWrapper::getString() { //restituisce il valore memorizzato
 
-	return value;
+	return _value;
 
 }
 
-int StringWrapper::type() { //zrestituisco il tipo di wrapper
+uint8_t StringWrapper::type() { //zrestituisco il tipo di wrapper
 
-	return Wrapper::STRING;
+	return STRING;
 
 }

@@ -22,17 +22,18 @@
 
 #include <Arduino.h>
 
+//---CONSTANTI PER I TIPI---
+#define STRING 0 //string
+#define DOUBLE 1 //double
+#define BOOLEAN 2 //boolean
+#define LONG 3 //long
+
+
 class Wrapper {
 
 	public:
 
-		virtual int type(); //funzione che restituisce il tipo di wrapper
-		
-		static const int STRING = 0; //String
-		static const int DOUBLE = 1; //Long
-		static const int BOOLEAN = 2; //bool
-		static const int LONG = 3; //long
-		static const int JDATA = 4; //jdata
+		virtual uint8_t type(); //funzione che restituisce il tipo di wrapper
 		
 };
 
@@ -40,15 +41,15 @@ class BooleanWrapper : public Wrapper {
 
 	public:
 
-		BooleanWrapper(int value); //costruttore per riempire l'oggetto
+		BooleanWrapper(uint8_t value); //costruttore per riempire l'oggetto
 
-		int type(); //funzione che restituisce il tipo di wrapper
+		uint8_t type(); //funzione che restituisce il tipo di wrapper
 
 		int getBoolean(); //funzione per estrarre il valore
 
 	private:
 
-		int value; //contenitore del valore
+		int _value; //contenitore del valore
 
 };
 
@@ -60,7 +61,7 @@ class DoubleWrapper : public Wrapper {
 		
 		DoubleWrapper(String value);
 
-		int type(); //funzione che restituisce il tipo di wrapper
+		uint8_t type(); //funzione che restituisce il tipo di wrapper
 
 		double getDouble(); //funzione per estrarre il valore
 		
@@ -69,7 +70,7 @@ class DoubleWrapper : public Wrapper {
 
 	private:
 
-		double value; //contenitore del valore
+		double _value; //contenitore del valore
 
 };
 
@@ -81,13 +82,13 @@ class LongWrapper : public Wrapper {
 		
 		LongWrapper(String value);
 
-		int type(); //funzione che restituisce il tipo di wrapper
+		uint8_t type(); //funzione che restituisce il tipo di wrapper
 
 		long getLong(); //funzione per estrarre il valore
 
 	private:
 
-		long value; //contenitore del valore
+		long _value; //contenitore del valore
 
 };
 
@@ -97,13 +98,13 @@ class StringWrapper : public Wrapper {
 
 		StringWrapper(String value); //costruttore per riempire l'oggetto
 
-		int type(); //funzione che restituisce il tipo di wrapper
+		uint8_t type(); //funzione che restituisce il tipo di wrapper
 
 		String getString(); //funzione per estrarre il valore
 
 	private:
 
-		String value; //contenitore del valore
+		String _value; //contenitore del valore
 
 };
 
