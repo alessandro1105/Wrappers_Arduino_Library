@@ -17,8 +17,8 @@
    @url            https://github.com/alessandro1105
 */
 
-#ifndef __WRAPPERS_H__
-#define __WRAPPERS_H__
+#ifndef WRAPPERS_H
+#define WRAPPERS_H
 
 #include <Arduino.h>
 
@@ -108,4 +108,4 @@ class StringWrapper : public Wrapper {
 
 };
 
-#endif //__WRAPPERS_H__
+#endif //WRAPPERS_H
