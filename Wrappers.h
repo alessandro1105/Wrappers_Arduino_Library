@@ -23,10 +23,10 @@
 #include <Arduino.h>
 
 //---CONSTANTI PER I TIPI---
-#define STRING 0 //string
-#define DOUBLE 1 //double
-#define BOOLEAN 2 //boolean
-#define LONG 3 //long
+#define WR_STRING 0 //string
+#define WR_DOUBLE 1 //double
+#define WR_BOOLEAN 2 //boolean
+#define WR_LONG 3 //long
 
 
 class Wrapper {

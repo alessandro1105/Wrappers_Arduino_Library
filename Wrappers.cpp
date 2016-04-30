@@ -40,7 +40,7 @@ int BooleanWrapper::getBoolean() { //restituisce il valore memorizzato
 
 uint8_t BooleanWrapper::type() { //zrestituisco il tipo di wrapper
 
-	return BOOLEAN;
+	return WR_BOOLEAN;
 	
 }
 
@@ -130,7 +130,7 @@ String DoubleWrapper::getString() { // restituisce il double convertito in strin
 
 uint8_t DoubleWrapper::type() { //zrestituisco il tipo di wrapper
 
-	return DOUBLE;
+	return WR_DOUBLE;
 
 }
 
@@ -161,7 +161,7 @@ long LongWrapper::getLong() { //restituisce il valore memorizzato
 
 uint8_t LongWrapper::type() { //zrestituisco il tipo di wrapper
 
-	return LONG;
+	return WR_LONG;
 
 }
 
@@ -181,6 +181,6 @@ String StringWrapper::getString() { //restituisce il valore memorizzato
 
 uint8_t StringWrapper::type() { //zrestituisco il tipo di wrapper
 
-	return STRING;
+	return WR_STRING;
 
 }
